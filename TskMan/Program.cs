@@ -1,6 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Threading.Tasks;
+using System.Runtime.InteropServices;
 using TskMan.Entities;
 using TskMan.Menu;
 using TskMan.Menu.Enums;
@@ -20,7 +20,6 @@ namespace TskMan
                 switch (options)
                 {
                     case MenuOptions.NewTask:
-                        Console.WriteLine("Criar nova task");
                         string title, content;
                         Console.Write("Task title: ");
                         title = Console.ReadLine();
@@ -31,20 +30,41 @@ namespace TskMan
                         taskCount++;
                         break;
                     case MenuOptions.Details:
-                        Console.WriteLine("Show details");
+                        int taskNum;
+                        Console.Write("Enter task id: ");
+                        taskNum = int.Parse(Console.ReadLine());
+                        ManTask fTask = manTasks.Find(task => task.Id == taskNum);
+                        if (fTask != null)
+                        {
+                            Console.WriteLine(fTask.ToString());
+                        }
+                        else
+                        {
+                            Console.WriteLine("Task not foud.");
+                        }
                         break;
                     case MenuOptions.ShowTask:
                         ShowTaskList(manTasks);
                         break;
                     case MenuOptions.DeleteTask:
-                        Console.WriteLine("Delete task");
+                        int taskId = 0;
+                        Console.Write("Id of task to remove: ");
+                        taskId = int.Parse(Console.ReadLine());
+                        bool result  = manTasks.Remove(manTasks.Find(task => task.Id == taskId));
+                        if (result)
+                        {
+                            Console.WriteLine($"Task {taskId} has been removed!");
+                        }
+                        else
+                        {
+                            Console.WriteLine("Failed to remove task, not foud.");
+                        }
                         break;
                     case MenuOptions.Exit:
                         Console.WriteLine("Bye!");
+                        menu = false;
                         break;
                 }
-                if (options == MenuOptions.Exit)
-                    menu = false;
             }
         }
 
@@ -52,10 +72,7 @@ namespace TskMan
         {
             foreach (ManTask task in manTasks)
             {
-                Console.WriteLine(task.Title);
-                Console.WriteLine(task.CreationDateTime.ToString("dd/MM/yyyy HH:mm:ss"));
-                Console.WriteLine(task.Content);
-                Console.WriteLine();
+                Console.WriteLine(task.ToString());
             }
         }
     }
