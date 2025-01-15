@@ -24,7 +24,8 @@ namespace TskMan.Entities
 
         public override string ToString(){
             StringBuilder stringBuilder = new();
-            stringBuilder.AppendLine($"Id: {Id} Created: {CreationDateTime.ToString()}");
+            stringBuilder.AppendLine($"Id: {Id}");
+            stringBuilder.AppendLine($"Created: {CreationDateTime.ToString()}");
             stringBuilder.AppendLine($"Title: {Title}");
             stringBuilder.AppendLine($"Content: {Content}");
             return stringBuilder.ToString();
