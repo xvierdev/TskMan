@@ -4,8 +4,9 @@ namespace TskMan.Menu.Enums
     {
         NewTask = 0,
         ShowTask = 1,
-        Details = 3,
-        DeleteTask = 4,
-        Exit = 5
+        Details = 2,
+        DeleteTask = 3,
+        Exit = 4,
+        None = 6
     }
 }
