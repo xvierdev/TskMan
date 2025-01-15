@@ -1,4 +1,5 @@
 using System;
+using System.Text;
 namespace TskMan.Entities
 {
     // Represents a user task.
@@ -19,6 +20,14 @@ namespace TskMan.Entities
             Title = title;
             Content = content;
             CreationDateTime = creationDateTime;
+        }
+
+        public override string ToString(){
+            StringBuilder stringBuilder = new();
+            stringBuilder.AppendLine($"Id: {Id} Created: {CreationDateTime.ToString()}");
+            stringBuilder.AppendLine($"Title: {Title}");
+            stringBuilder.AppendLine($"Content: {Content}");
+            return stringBuilder.ToString();
         }
     }
 }
