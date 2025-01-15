@@ -10,9 +10,11 @@ namespace TskMan
     {
         static void Main(string[] args)
         {
+            int taskCount = 0;
             Console.WriteLine("Welcome TskMan application..");
             List<ManTask> manTasks = [];
-            while (true)
+            bool menu = true;
+            while (menu)
             {
                 MenuOptions options = MainMenu.Show();
                 switch (options)
@@ -24,8 +26,9 @@ namespace TskMan
                         title = Console.ReadLine();
                         Console.WriteLine("Task content: ");
                         content = Console.ReadLine();
-                        ManTask task = new(title, content, DateTime.Now);
+                        ManTask task = new(taskCount, title, content, DateTime.Now);
                         manTasks.Add(task);
+                        taskCount++;
                         break;
                     case MenuOptions.Details:
                         Console.WriteLine("Show details");
@@ -41,7 +44,7 @@ namespace TskMan
                         break;
                 }
                 if (options == MenuOptions.Exit)
-                    break;
+                    menu = false;
             }
         }
 
