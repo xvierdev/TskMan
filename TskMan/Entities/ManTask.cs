@@ -1,4 +1,5 @@
 using System;
+using TskMan.Entities.Exceptions;
 namespace TskMan.Entities
 {
     // Represents a user task.
@@ -12,11 +13,19 @@ namespace TskMan.Entities
         {
 
         }
-        public ManTask(string title, string content, DateTime creationDateTime)
+        public ManTask(string title, string content)
         {
+            if (title == "")
+            {
+                throw new DomainException("Task title is empty.");
+            }
+            if (content == "")
+            {
+                throw new DomainException("Content is empty.");
+            }
             Title = title;
             Content = content;
-            CreationDateTime = creationDateTime;
+            CreationDateTime = DateTime.Now;
         }
     }
 }

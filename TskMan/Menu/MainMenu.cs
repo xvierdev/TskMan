@@ -6,13 +6,20 @@ namespace TskMan.Menu
     {
         public static MenuOptions Show()
         {
-            Console.WriteLine("0 : Create new task.");
-            Console.WriteLine("1 : Show tasks.");
-            Console.WriteLine("2 : View details.");
-            Console.WriteLine("3 : Delete task.");
-            Console.WriteLine("4 : Exit.");
-            Console.Write("Choose your option: ");
-            return Enum.Parse<MenuOptions>(Console.ReadLine());
+            try
+            {
+                Console.WriteLine(MenuOptions.NewTask + " : Create new task.");
+                Console.WriteLine(MenuOptions.ShowTask + " : Show tasks.");
+                Console.WriteLine(MenuOptions.Details + " : View details.");
+                Console.WriteLine(MenuOptions.DeleteTask + " : Delete task.");
+                Console.WriteLine(MenuOptions.Exit + " : Exit.");
+                Console.Write("Choose your option: ");
+                return Enum.Parse<MenuOptions>(Console.ReadLine());
+            }
+            catch (ArgumentException ex){
+                Console.WriteLine("Error: " + ex.Message);
+                return MenuOptions.None;
+            }
         }
     }
 }

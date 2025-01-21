@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Threading.Tasks;
 using TskMan.Entities;
+using TskMan.Entities.Exceptions;
 using TskMan.Menu;
 using TskMan.Menu.Enums;
 namespace TskMan
@@ -18,14 +19,21 @@ namespace TskMan
                 switch (options)
                 {
                     case MenuOptions.NewTask:
-                        Console.WriteLine("Criar nova task");
-                        string title, content;
-                        Console.Write("Task title: ");
-                        title = Console.ReadLine();
-                        Console.WriteLine("Task content: ");
-                        content = Console.ReadLine();
-                        ManTask task = new(title, content, DateTime.Now);
-                        manTasks.Add(task);
+                        try
+                        {
+                            Console.WriteLine("Criar nova task");
+                            string title, content;
+                            Console.Write("Task title: ");
+                            title = Console.ReadLine();
+                            Console.WriteLine("Task content: ");
+                            content = Console.ReadLine();
+                            ManTask task = new(title, content);
+                            manTasks.Add(task);
+                        }
+                        catch (DomainException ex)
+                        {
+                            Console.WriteLine("Error: " + ex.Message);
+                        }
                         break;
                     case MenuOptions.Details:
                         Console.WriteLine("Show details");
