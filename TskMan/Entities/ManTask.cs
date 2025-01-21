@@ -1,9 +1,5 @@
 using System;
-<<<<<<< HEAD
 using TskMan.Entities.Exceptions;
-=======
-using System.Text;
->>>>>>> ca9b8b505946e048edf6d4b555579ebb5de1214e
 namespace TskMan.Entities
 {
     // Represents a user task.
@@ -18,7 +14,6 @@ namespace TskMan.Entities
         {
 
         }
-<<<<<<< HEAD
         public ManTask(string title, string content)
         {
             if (title == "")
@@ -29,11 +24,6 @@ namespace TskMan.Entities
             {
                 throw new DomainException("Content is empty.");
             }
-=======
-        public ManTask(int id, string title, string content, DateTime creationDateTime)
-        {
-            Id = id;
->>>>>>> ca9b8b505946e048edf6d4b555579ebb5de1214e
             Title = title;
             Content = content;
             CreationDateTime = DateTime.Now;
