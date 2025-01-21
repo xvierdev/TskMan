@@ -1,4 +1,4 @@
-namespace TskMan.Menu.Enums
+namespace TskMan.Entities.Enums
 {
     enum MenuOptions : int
     {

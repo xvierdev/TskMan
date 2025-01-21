@@ -9,14 +9,15 @@ namespace TskMan.Entities
             try
             {
                 // Show menu options to select action
-                Console.WriteLine(MenuOptions.NewTask + " : Create new task");
-                Console.WriteLine(MenuOptions.ShowTask + " : Show tasks");
-                Console.WriteLine(MenuOptions.DeleteTask + " : Delete task.");
-                Console.WriteLine(MenuOptions.Exit + " : Exit.");
+                Console.WriteLine((int)MenuOptions.NewTask + " : Create new task");
+                Console.WriteLine((int)MenuOptions.ShowTask + " : Show tasks");
+                Console.WriteLine((int)MenuOptions.DeleteTask + " : Delete task.");
+                Console.WriteLine((int)MenuOptions.Exit + " : Exit.");
                 Console.Write("Choose your option: ");
                 return Enum.Parse<MenuOptions>(Console.ReadLine());
             }
-            catch (ArgumentException ex){
+            catch (ArgumentException ex)
+            {
                 Console.WriteLine("Error: " + ex.Message);
                 return MenuOptions.None;
             }

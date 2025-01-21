@@ -1,4 +1,5 @@
 using System;
+using System.Text;
 using TskMan.Entities.Exceptions;
 namespace TskMan.Entities
 {
